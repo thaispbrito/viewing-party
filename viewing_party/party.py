@@ -38,13 +38,46 @@ def watch_movie(user_data, title):
 # -----------------------------------------
 # ------------- WAVE 2 --------------------
 # -----------------------------------------
+def get_watched_avg_rating(user_data):
 
+#   Calculate the average rating of all movies in the watched list
+    avg_rating = 0.0
+    total_watched_movies = len(user_data["watched"])
+    rating_sum = 0
+
+    if not len(user_data["watched"]) == 0:
+        for movie in user_data["watched"]:
+            rating_sum+=movie["rating"]         #Add all the ratings
+        avg_rating = rating_sum / total_watched_movies  #Calculate Average
+    return avg_rating
+
+def get_most_watched_genre(user_data):
+
+# Determine which genre is most frequently occurring in the watched list
+    genre_counts = {}   #Dictionary keep track of how many times each genre appears
+    most_watched_genre = None
+    most_watched_genre_count = 0
+
+    for movie in user_data["watched"]:
+        # Get the genre of the current movie
+        genre = movie["genre"]
+        # Check if the genre is already in the dictionary
+        if genre in genre_counts:   #Update the count of each genre in the dictionary
+            genre_counts[genre]+= 1
+        else:
+            genre_counts[genre] = 1
+            
+    # Compare count of each genre
+    for genre in genre_counts:
+        if genre_counts[genre] > most_watched_genre_count:
+            most_watched_genre_count = genre_counts[genre]
+            most_watched_genre = genre
+    return most_watched_genre
 
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
 
-        
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
 # -----------------------------------------
