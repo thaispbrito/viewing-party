@@ -102,10 +102,12 @@ def get_friends_unique_watched(user_data):
 
     # which movies at least one of the user's friends have watched, but the user has not watched
     result = []
+    result_titles = []
     for friend in user_data["friends"]:
         for movie in friend["watched"]:
-            if movie["title"] not in user_movies and movie["title"] not in result:
-                result.append(movie)        
+            if movie["title"] not in user_movies and movie["title"] not in result_titles:
+                result.append(movie)
+                result_titles.append(movie["title"])        
 
     return result
 
