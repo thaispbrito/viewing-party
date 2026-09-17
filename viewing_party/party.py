@@ -135,4 +135,26 @@ def get_available_recs(user_data):
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
+def get_new_rec_by_genre(user_data):
 
+    most_watched_genre = get_most_watched_genre(user_data)  #User's most frequently watched genre
+    friends_watched = get_friends_unique_watched(user_data) #User has not watched, at least one friend watchec it
+    recommended_movies = []
+
+    for movie in friends_watched:
+    # The "genre" of the movie is the same as the user's most frequent genre
+        if movie["genre"] == most_watched_genre:
+            recommended_movies.append(movie)
+
+    return recommended_movies
+
+def get_rec_from_favorites(user_data):
+
+    user_watched = get_unique_watched(user_data) #Get "Only User" watched movies
+    recommended_movies = []
+
+    for movie in user_data["favorites"]:    #The movie is in the user's "favorites"
+        if movie in user_watched:           #None of the user's friends have watched it
+            recommended_movies.append(movie)
+
+    return recommended_movies
