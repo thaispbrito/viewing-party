@@ -21,5 +21,4 @@ Talk through each section with your partner. Add notes on what you discussed and
 *Other co-working agreements that were not captured in the above sections.*
 
 ## Signatures
-Hardeep Kaur Thais Palma de Brito
-Date: 09-14-2026
+Hardeep Kaur & Thais Palma de Brito | Date: 09-14-2026
