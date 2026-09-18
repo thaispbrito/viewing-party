@@ -51,7 +51,6 @@ def test_friends_unique_movies_not_duplicated():
 
     # Act
     friends_unique_movies = get_friends_unique_watched(amandas_data)
-
     count = 0
     for movie in friends_unique_movies:
         if movie == INTRIGUE_3:
@@ -59,7 +58,6 @@ def test_friends_unique_movies_not_duplicated():
 
     # Assert
     assert len(friends_unique_movies) == 3
-
     assert count == 1
 
 # @pytest.mark.skip()
