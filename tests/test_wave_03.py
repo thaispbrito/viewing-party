@@ -2,6 +2,30 @@ import pytest
 from viewing_party.party import *
 from tests.test_constants import *
 
+### Helper function to calculate count
+def count_value(my_collection, value):
+    '''
+    This helper function was created to calculate the count
+    in test_friends_unique_movies_not_duplicated() test function
+
+    It counts how many times a value appears in a collection
+
+    Input:
+        my_collection: a collection of values to search, like a list
+        value: the value to count
+
+    Output:
+        An integer representing the number of times the value appears
+        in the collection
+    '''
+
+    count = 0
+    for item in my_collection:
+        if item == value:
+            count += 1
+
+    return count
+
 # @pytest.mark.skip()
 def test_my_unique_movies():
     # Arrange
@@ -51,14 +75,10 @@ def test_friends_unique_movies_not_duplicated():
 
     # Act
     friends_unique_movies = get_friends_unique_watched(amandas_data)
-    count = 0
-    for movie in friends_unique_movies:
-        if movie == INTRIGUE_3:
-            count += 1
 
     # Assert
     assert len(friends_unique_movies) == 3
-    assert count == 1
+    assert count_value(friends_unique_movies, INTRIGUE_3) == 1
 
 # @pytest.mark.skip()
 def test_friends_not_unique_movies():
